@@ -1,3 +1,9 @@
+//Author: Jacob Slee
+//Adapted from https://www.megalomobile.com/lets-make-solitaire-in-unity-part-1-set-up-and-shuffle/
+
+
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,7 +64,7 @@ public class SolitaireGame : MonoBehaviour
 
     }
 
-    
+    //draws one card from the deck area and places the old card in the discard pile
     public void DealFromDeck()
     {
 
@@ -132,7 +138,8 @@ public class SolitaireGame : MonoBehaviour
 
     }
 
-
+    //generates a string of values from the suits and types lists
+    //concatinates the values into on list item
     public static List<string> GenDeck()
 
     {
@@ -147,7 +154,7 @@ public class SolitaireGame : MonoBehaviour
         return newDeck;
     }
 
-
+    //randomizes the Deck list 
     void Shuffle<T>(List<T> list)
     {
         System.Random random = new System.Random();
@@ -161,7 +168,7 @@ public class SolitaireGame : MonoBehaviour
             list[n] = temp;
         }
     }
-
+    //deals ards out to the rows lists
     void SolitaireSortRows()
     {
         for (int i = 0; i < 7; i++)
@@ -176,7 +183,8 @@ public class SolitaireGame : MonoBehaviour
 
     }
 
-
+    //generates the sprites for the rows based on the lists objects within them.Each new card generated with a differing z and y axis. 
+    
     void SolitaireDeal() {
 
 
@@ -221,7 +229,7 @@ public class SolitaireGame : MonoBehaviour
 
 
   
-
+    //resets the deck area from the discard pile
     void RestackTopDeck()
     {
         deck.Clear();

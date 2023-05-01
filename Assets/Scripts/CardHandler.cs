@@ -1,3 +1,10 @@
+
+//Author: Jacob Slee
+//Adapted from https://www.megalomobile.com/lets-make-solitaire-in-unity-part-1-set-up-and-shuffle/
+
+
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +28,7 @@ public class CardHandler : MonoBehaviour
         game = FindObjectOfType<SolitaireGame>();
        userInput = FindObjectOfType<UserInputHandler>();
 
-
+        //add the front picture to each card
         int i = 0;
 
             foreach (string card in deck) { 
@@ -37,7 +44,7 @@ public class CardHandler : MonoBehaviour
         select = GetComponent<Select>();
 
     }
-
+    //if the card is slected and face up, highlight it green
     void Update() 
     {
         if (select.faceUp == true)

@@ -1,3 +1,8 @@
+
+//Author: Jacob Slee
+//Adapted from  https://www.youtube.com/watch?v=iQ2w4cQzekk
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -50,6 +55,8 @@ public class DBHighScore : MonoBehaviour
 
         }
     }
+
+    //attempt at making the scores appear on screen
     /*
         public void DisplayScores()
         {

@@ -1,3 +1,8 @@
+//Author: Jacob Slee
+//Adapted from https://www.megalomobile.com/lets-make-solitaire-in-unity-part-1-set-up-and-shuffle/
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -5,10 +10,16 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using System.Linq;
 
+
+
+
+
 public class UserInputHandler : MonoBehaviour
 {
     private SolitaireGame solitaire;
     public GameObject slot1;
+
+
     
     void Start()
     {
@@ -22,6 +33,9 @@ public class UserInputHandler : MonoBehaviour
 
 
     }
+
+    //Get the mouse click and location of mouse click
+    //if it hits and object with a tag a different method is activiated
 
     void GetMouseClick()
     {
@@ -57,6 +71,10 @@ public class UserInputHandler : MonoBehaviour
             }
         }
     }
+
+    //draws one card from the Deck list and adds the previous draw to the discard pile
+
+
     void Deck()
     {
        
@@ -147,6 +165,8 @@ public class UserInputHandler : MonoBehaviour
         
         Select s1 = slot1.GetComponent<Select>();
         Select s2 = seletected.GetComponent<Select>();
+
+        /*
         if (!s2.inDeckPile)
         {
             if (s2.top)
@@ -195,7 +215,9 @@ public class UserInputHandler : MonoBehaviour
             }
         }
         return false; 
+        */
 
+        return true;
     }
 
     void Stack(GameObject selected)
@@ -213,6 +235,9 @@ public class UserInputHandler : MonoBehaviour
         }
 
         slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - 1);
+
+
+        /*
 
         if (s1.inDeckPile) // removes the cards from the top pile to prevent duplicate cards
         {
@@ -249,34 +274,40 @@ public class UserInputHandler : MonoBehaviour
         // after completing move reset slot1 to be essentially null as being null will break the logic
         slot1 = this.gameObject;
 
+        */
+
     }
 
     bool Blocked(GameObject selected)
     {
-        Select s2 = selected.GetComponent<Select>();
-        if (s2.inDeckPile == true)
-        {
-            if (s2.name == solitaire.Drawn.Last()) // if it is the last trip it is not blocked
-            {
-                return false;
-            }
-            else
-            {
-                print(s2.name + " is blocked by " + solitaire.Drawn.Last());
-                return true;
-            }
-        }
-        else
-        {
-            if (s2.name == solitaire.bottoms[s2.row].Last()) // check if it is the bottom card
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        /*      
+              Select s2 = selected.GetComponent<Select>();
+              if (s2.inDeckPile == true)
+              {
+                  if (s2.name == solitaire.Drawn.Last()) // if it is the last trip it is not blocked
+                  {
+                      return false;
+                  }
+                  else
+                  {
+                      print(s2.name + " is blocked by " + solitaire.Drawn.Last());
+                      return true;
+                  }
+              }
+              else
+              {
+                  if (s2.name == solitaire.bottoms[s2.row].Last()) // check if it is the bottom card
+                  {
+                      return false;
+                  }
+                  else
+                  {
+                      return true;
+                  }
+
+              }
+        */
+        return true;
     }
 
 

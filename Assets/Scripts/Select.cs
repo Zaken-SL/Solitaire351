@@ -1,3 +1,8 @@
+//Author: Jacob Slee
+//Adapted from https://www.megalomobile.com/lets-make-solitaire-in-unity-part-1-set-up-and-shuffle/
+
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
