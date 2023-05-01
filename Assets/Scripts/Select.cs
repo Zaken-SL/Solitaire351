@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -14,7 +15,7 @@ public class Select : MonoBehaviour
     public bool inDeckPile = false;
 
     private string valueString;
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -27,47 +28,20 @@ public class Select : MonoBehaviour
 
                 char c = transform.name[i];
                 valueString = valueString + c.ToString();
+                
             }
+            bool isNumber = int.TryParse(valueString, out int numericValue);
+
+            if (isNumber)
+            {
+
+                value = numericValue;
+            }
+
 
             if (valueString == "A")
             {
                 value = 1;
-            }
-            if (valueString == "2")
-            {
-                value = 2;
-            }
-            if (valueString == "3")
-            {
-                value = 3;
-            }
-            if (valueString == "4")
-            {
-                value = 4;
-            }
-            if (valueString == "5")
-            {
-                value = 5;
-            }
-            if (valueString == "6")
-            {
-                value = 6;
-            }
-            if (valueString == "7")
-            {
-                value = 7;
-            }
-            if (valueString == "8")
-            {
-                value = 8;
-            }
-            if (valueString == "9")
-            {
-                value = 9;
-            }
-            if (valueString == "10")
-            {
-                value = 10;
             }
             if (valueString == "J")
             {

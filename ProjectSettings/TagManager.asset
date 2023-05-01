@@ -8,6 +8,7 @@ TagManager:
   - Top
   - Bottom
   - Card
+  - BackGround
   layers:
   - Default
   - TransparentFX

@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 40572734}
   - component: {fileID: 40572733}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: board2
-  m_TagString: Untagged
+  m_TagString: BackGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,10 +1249,10 @@ MonoBehaviour:
   - {fileID: 1945955809}
   - {fileID: 1386912821}
   deck: []
-  tripsOnDisplay: []
   deckButton: {fileID: 1099767250}
   discardPile: []
   Drawn: []
+  notDrawn: []
 --- !u!4 &700502470
 Transform:
   m_ObjectHideFlags: 0

@@ -10,17 +10,16 @@ public class UserInputHandler : MonoBehaviour
     private SolitaireGame solitaire;
     public GameObject slot1;
     
-    // Start is called before the first frame update
     void Start()
     {
         solitaire = FindObjectOfType<SolitaireGame>();
         slot1 = this.gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetMouseClick();
+
 
     }
 
@@ -34,25 +33,25 @@ public class UserInputHandler : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit)
             {
-                // what has been hit? Deck/Card/EmptySlot...
+             
                 if (hit.collider.CompareTag("Deck"))
                 {
-                    //clicked deck
+                  
                     Deck();
                 }
                 else if (hit.collider.CompareTag("Card"))
                 {
-                    // clicked card
+                    
                     Card(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Top"))
                 {
-                    // clicked top
+                    
                     Top(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Bottom"))
                 {
-                    // clicked bottom
+                    
                     Bottom(hit.collider.gameObject);
                 }
             }
@@ -60,25 +59,22 @@ public class UserInputHandler : MonoBehaviour
     }
     void Deck()
     {
-        // deck click actions
-        print("Clicked on deck");
+       
         solitaire.DealFromDeck(); 
 
         
     }
     void Card(GameObject selected)
     {
-        // card click actions
-        print("Clicked on Card");
+
 
         if (!selected.GetComponent<Select>().faceUp) {
 
-            if (!Blocked(selected))
-            {
+          
 
                 selected.GetComponent<Select>().faceUp = true;
                 slot1 = this.gameObject;
-            }
+            
         }
 
 
@@ -101,23 +97,14 @@ public class UserInputHandler : MonoBehaviour
                 slot1 = selected;
             }
         }
-        else if (selected.GetComponent<Select>().inDeckPile) // if the card clicked on is in the deck pile with the trips
+        else if (selected.GetComponent<Select>().inDeckPile) 
         {
             // if it is not blocked
             if (!Blocked(selected))
             {
-          //      if (slot1 == selected) // if the same card is clicked twice
-          //      {
-          //          if (DoubleClick())
-           //         {
-                        // attempt auto stack
-           //             AutoStack(selected);
-           //         }
-           //     }
-          //      else
-          //      {
+       
                     slot1 = selected;
-           //     }
+           
             }
 
         }
@@ -175,7 +162,7 @@ public class UserInputHandler : MonoBehaviour
                 {
                     return false;
                 }
-            }
+           }
             else
             {
                 if (s1.value == s2.value - 1)
@@ -225,12 +212,11 @@ public class UserInputHandler : MonoBehaviour
             yOffset = 0;
         }
 
-        slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - 0.01f);
-        slot1.transform.parent = selected.transform; // this makes the children move with the parents
+        slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - 1);
 
         if (s1.inDeckPile) // removes the cards from the top pile to prevent duplicate cards
         {
-            solitaire.tripsOnDisplay.Remove(slot1.name);
+            solitaire.Drawn.Remove(slot1.name);
         }
         else if (s1.top && s2.top && s1.value == 1) // allows movement of cards between top spots
         {
@@ -270,13 +256,13 @@ public class UserInputHandler : MonoBehaviour
         Select s2 = selected.GetComponent<Select>();
         if (s2.inDeckPile == true)
         {
-            if (s2.name == solitaire.tripsOnDisplay.Last()) // if it is the last trip it is not blocked
+            if (s2.name == solitaire.Drawn.Last()) // if it is the last trip it is not blocked
             {
                 return false;
             }
             else
             {
-                print(s2.name + " is blocked by " + solitaire.tripsOnDisplay.Last());
+                print(s2.name + " is blocked by " + solitaire.Drawn.Last());
                 return true;
             }
         }
